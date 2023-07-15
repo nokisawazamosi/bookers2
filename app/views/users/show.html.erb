@@ -1,0 +1,23 @@
+<div>
+  <h2>User info</h2>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <table>
+      <tr>
+        <td>name</td>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+      </tr>
+  </table>
+</div>
+
+<%= @books.each do |book| %>
+<table>
+  <tr>
+    <td><%= image_tag book.user.get_profile_image(80,80) %></td>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+  </tr>
+</table>
+<% end %>
