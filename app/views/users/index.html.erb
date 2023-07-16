@@ -1,0 +1,15 @@
+<h2>Users</h2>
+<table>
+  <tr>
+    <th>image</th>
+    <th>name</th>
+  </tr>
+  
+  
+  <!-- ここから下まだ　-->
+  <tr><% @user.each do |f| %></tr>
+    <td><%= user_image %></td>
+    <td><%= user_name %></td>
+    <td><%= link_to "Show" user_path(params[:id]) %></td>
+  <tr><% end %></tr>
+</table>

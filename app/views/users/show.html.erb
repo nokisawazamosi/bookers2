@@ -1,4 +1,13 @@
-<div>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
   <h2>User info</h2>
   <%= image_tag @user.get_profile_image(100,100) %>
   <table>
@@ -8,16 +17,30 @@
       </tr>
       <tr>
         <td>introduction</td>
+        <td><%= @user.introduction %></td>
       </tr>
   </table>
+
+<table>
+    <tr><%= @books.each do |book| %></tr>
+      <td><%= image_tag book.user.get_profile_image(80,80) %></td>
+      <td><%= link_to book.title,book_path(book.id) %></td>
+      <td><%= book.body %></td>
+    <tr><% end %></tr>
+</table>
+
+
+<div>
+  <%= link_to edit_user_path do %>
+    <i class="fa-solid fa-user-gear" style="color: #5f6267;"></i>
+  <% end %>
 </div>
 
-<%= @books.each do |book| %>
-<table>
-  <tr>
-    <td><%= image_tag book.user.get_profile_image(80,80) %></td>
-    <td><%= book.title %></td>
-    <td><%= book.body %></td>
-  </tr>
-</table>
+<h1>New book</h1>
+<%= form_with model: @book do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create Book' %>
 <% end %>
