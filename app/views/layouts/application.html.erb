@@ -71,10 +71,11 @@
         </div>
       </nav>
     </header>
-    <div>
-      <%= flash[:notice] %>
-    </div>
     <main>
+      <%= flash[:notice] %>
+      <div class="d-flex justify-content-center mb-2">
+        <%= render "searches/form" %>
+      </div>
       <%= yield %>
     </main>
     <footer>

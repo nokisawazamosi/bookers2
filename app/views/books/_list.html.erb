@@ -25,8 +25,12 @@
 
 
 <div>
-  <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block edit_user_120089" do %>
-    <i class="fas fa-user-cog" style="color: #5f6267;"></i>
+  <% if user == current_user %>
+    <%= link_to edit_user_path(user.id), class: "btn btn-outline-secondary btn-block edit_user_120089" do %>
+      <i class="fas fa-user-cog" style="color: #5f6267;"></i>
+    <% end %>
+  <% else %>
+    <%= render "relationships/btn", user: user %>
   <% end %>
 </div>
 
